@@ -30,7 +30,7 @@
       for declaration: message_typechecked.declarations {
         if declaration.name {
           for note: declaration.notes {
-            if note.text == "Test" && declaration.name {
+            if note.text == "Test" {
               add_build_string(sprint("#run %();", declaration.name), test_workspace);
               tests_count += 1;
             }
