@@ -5,6 +5,7 @@
 
 #load "src/lex_lisp_file.jai";
 #load "src/parse_lisp_tokens.jai";
+#load "src/evaluate.jai";
 
 main :: () {
   arguments := get_command_line_arguments();
@@ -24,11 +25,11 @@ main :: () {
   {
     push_allocator(pool_allocator, *pool);
     lisp_ast := parse_lisp_file(lisp_file);
-    pretty_print_lisp_ast(lisp_ast);
+    print("%\n", evaluate(..lisp_ast));
   }
 }
 
-parse_lisp_file :: (lisp_file: File) -> []*Expression {;
+parse_lisp_file :: (lisp_file: File) -> []*Expression {
   tokens := lex_lisp_file(lisp_file);
   return parse_lisp_tokens(tokens);
 }

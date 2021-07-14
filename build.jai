@@ -44,6 +44,7 @@
 
   target_workspace := compiler_create_workspace("target");
   target_build_options := get_build_options();
+  target_build_options.output_type = .EXECUTABLE;
   target_build_options.output_executable_name = "rc-lisp";
   set_build_options(target_build_options, target_workspace);
 
